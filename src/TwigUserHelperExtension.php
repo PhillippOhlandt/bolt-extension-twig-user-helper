@@ -11,5 +11,13 @@ use Bolt\Extension\SimpleExtension;
  */
 class TwigUserHelperExtension extends SimpleExtension
 {
-
+    /**
+     * Such name, much pretty.
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return 'Twig User Helper';
+    }
 }
