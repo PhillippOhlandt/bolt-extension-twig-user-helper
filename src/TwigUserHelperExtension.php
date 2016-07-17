@@ -21,12 +21,20 @@ class TwigUserHelperExtension extends SimpleExtension
     {
         return [
             'users' => 'usersTwig',
+            'user' => 'userTwig',
         ];
     }
 
     public function usersTwig()
     {
         return $this->getActiveUsers();
+    }
+
+    public function userTwig($id)
+    {
+        $repo = $this->getUsersRepository();
+
+        return $repo->getUser($id);
     }
 
     protected function getUsersRepository()
