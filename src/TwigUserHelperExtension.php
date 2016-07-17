@@ -7,7 +7,7 @@ use Bolt\Extension\SimpleExtension;
 /**
  * TwigUserHelper extension class.
  *
- * @author Your Name <you@example.com>
+ * @author Phillipp Ohlandt <phillipp.ohlandt@googlemail.com>
  */
 class TwigUserHelperExtension extends SimpleExtension
 {

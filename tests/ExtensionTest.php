@@ -8,7 +8,7 @@ use Bolt\Extension\Ohlandt\TwigUserHelper\TwigUserHelperExtension;
 /**
  * TwigUserHelper testing class.
  *
- * @author Your Name <you@example.com>
+ * @author Phillipp Ohlandt <phillipp.ohlandt@googlemail.com>
  */
 class ExtensionTest extends BoltUnitTest
 {
