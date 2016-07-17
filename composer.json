@@ -1,0 +1,37 @@
+{
+    "name": "ohlandt/twig-user-helper",
+    "description": "",
+    "type": "bolt-extension",
+    "keywords": [
+    ],
+    "require": {
+        "bolt/bolt": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "",
+            "email": "you@example.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Bolt\\Extension\\Ohlandt\\TwigUserHelper\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bolt\\Extension\\Ohlandt\\TwigUserHelper\\Tests\\": "tests",
+            "Bolt\\Tests\\": "vendor/bolt/bolt/tests/phpunit/unit/"
+        }
+    },
+    "extra": {
+        "bolt-assets": "web",
+        "bolt-class": "Bolt\\Extension\\Ohlandt\\TwigUserHelper\\TwigUserHelperExtension"
+    }
+}
