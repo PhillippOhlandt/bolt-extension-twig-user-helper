@@ -3,6 +3,7 @@
 namespace Bolt\Extension\Ohlandt\TwigUserHelper;
 
 use Bolt\Extension\SimpleExtension;
+use Bolt\Storage\Repository\UsersRepository;
 
 /**
  * TwigUserHelper extension class.
@@ -11,6 +12,54 @@ use Bolt\Extension\SimpleExtension;
  */
 class TwigUserHelperExtension extends SimpleExtension
 {
+    /**
+     * @inheritdoc
+     *
+     * @return array
+     */
+    protected function registerTwigFunctions()
+    {
+        return [
+            'users' => 'usersTwig',
+        ];
+    }
+
+    public function usersTwig()
+    {
+        return $this->getActiveUsers();
+    }
+
+    protected function getUsersRepository()
+    {
+        $app = $this->getContainer();
+        /** @var UsersRepository */
+        return $app['storage']->getRepository('Bolt\Storage\Entity\Users');
+    }
+
+    protected function getActiveUsersQueryBuilder(UsersRepository $repo)
+    {
+        $qb = $repo->createQueryBuilder();
+        $qb->where('enabled = :enabled');
+        $qb->setParameter('enabled', 1);
+
+        return $qb;
+    }
+
+    protected function getActiveUsers()
+    {
+        $repo = $this->getUsersRepository();
+        $qb = $this->getActiveUsersQueryBuilder($repo);
+        $users = array_map(function ($user) {
+            $user->setPassword(null);
+            $user->setShadowpassword(null);
+            $user->setShadowtoken(null);
+            $user->setShadowvalidity(null);
+            return $user;
+        }, $repo->findwith($qb));
+
+        return $users;
+    }
+
     /**
      * Such name, much pretty.
      *
