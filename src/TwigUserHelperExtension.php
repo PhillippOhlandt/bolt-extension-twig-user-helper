@@ -27,7 +27,9 @@ class TwigUserHelperExtension extends SimpleExtension
 
     public function usersTwig()
     {
-        return $this->getActiveUsers();
+        $repo = $this->getUsersRepository();
+
+        return $repo->getUsers();
     }
 
     public function userTwig($id)
@@ -42,30 +44,6 @@ class TwigUserHelperExtension extends SimpleExtension
         $app = $this->getContainer();
         /** @var UsersRepository */
         return $app['storage']->getRepository('Bolt\Storage\Entity\Users');
-    }
-
-    protected function getActiveUsersQueryBuilder(UsersRepository $repo)
-    {
-        $qb = $repo->createQueryBuilder();
-        $qb->where('enabled = :enabled');
-        $qb->setParameter('enabled', 1);
-
-        return $qb;
-    }
-
-    protected function getActiveUsers()
-    {
-        $repo = $this->getUsersRepository();
-        $qb = $this->getActiveUsersQueryBuilder($repo);
-        $users = array_map(function ($user) {
-            $user->setPassword(null);
-            $user->setShadowpassword(null);
-            $user->setShadowtoken(null);
-            $user->setShadowvalidity(null);
-            return $user;
-        }, $repo->findwith($qb));
-
-        return $users;
     }
 
     /**
