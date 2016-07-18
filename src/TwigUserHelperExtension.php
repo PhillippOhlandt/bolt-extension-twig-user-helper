@@ -29,14 +29,22 @@ class TwigUserHelperExtension extends SimpleExtension
     {
         $repo = $this->getUsersRepository();
 
-        return $repo->getUsers();
+        return array_map(function($user){
+            return $user->serialize();
+        }, $repo->getUsers());
     }
 
     public function userTwig($id)
     {
         $repo = $this->getUsersRepository();
 
-        return $repo->getUser($id);
+        $user = $repo->getUser($id);
+
+        if($user){
+            return $user->serialize();
+        }
+
+        return null;
     }
 
     protected function getUsersRepository()
