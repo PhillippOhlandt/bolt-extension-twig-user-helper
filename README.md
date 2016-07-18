@@ -19,7 +19,7 @@ The `users()` function returns all registered users. They are sort by ID and con
 
 ```
 {% for user in users() if user.enabled %}
-    {{ user.displayName }} <br>
+    {{ user.displayname }} <br>
 {% endfor %}
 ```
 
@@ -27,13 +27,13 @@ You can also order them by username or any other key on the user object.
 
 ```
 {% for user in users()|order('username') if user.enabled %}
-    {{ user.displayName }} <br>
+    {{ user.displayname }} <br>
 {% endfor %}
 ```
 
 ### Get a Single User
 
-The `user()` function returns a single user object, or `false` if no user was found. 
+The `user()` function returns a single user array, or `null` if no user was found. 
 It accepts an ID, an username or an email address as parameter.
 
 ```
