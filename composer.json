@@ -1,8 +1,14 @@
 {
     "name": "ohlandt/twig-user-helper",
-    "description": "",
+    "description": "Twig functions to access Bolt users in templates.",
     "type": "bolt-extension",
     "keywords": [
+        "twig",
+        "template",
+        "users",
+        "helper",
+        "util",
+        "utilities"
     ],
     "require": {
         "bolt/bolt": "^3.0"
