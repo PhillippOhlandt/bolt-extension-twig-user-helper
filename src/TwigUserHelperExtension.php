@@ -29,7 +29,7 @@ class TwigUserHelperExtension extends SimpleExtension
     {
         $repo = $this->getUsersRepository();
 
-        return array_map(function($user){
+        return array_map(function ($user) {
             return $user->serialize();
         }, $repo->getUsers());
     }
@@ -40,7 +40,7 @@ class TwigUserHelperExtension extends SimpleExtension
 
         $user = $repo->getUser($id);
 
-        if($user){
+        if ($user) {
             return $user->serialize();
         }
 
