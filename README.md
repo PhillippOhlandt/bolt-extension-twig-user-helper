@@ -41,7 +41,7 @@ It accepts an ID, an username or an email address as parameter.
 ```
 
 ```
-{% set user = user('phillipp) %}
+{% set user = user('phillipp') %}
 ```
 
 ```
